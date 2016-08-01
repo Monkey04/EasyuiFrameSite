@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>分类模板页</title>
+		
+		<link rel="stylesheet" href="css/admin.css" />
+		<link rel="stylesheet" href="js/jquery-easyui-1.4/themes/default/easyui.css"/>
+		<link rel="stylesheet" href="js/jquery-easyui-1.4/themes/icon.css" />
+		
+		<script type="text/javascript" src="js/jquery-1.9.1.min.js" ></script>
+		<script type="text/javascript" src="js/jquery-easyui-1.4/jquery.easyui.min.js"> </script>
+		<script type="text/javascript" src="js/jquery-easyui-1.4/jquery.easyui.msg.js"> </script>
+		<script type="text/javascript" src="js/jquery-easyui-1.4/jquery.easyui.resize.js"> </script>
+		
+		<script type="text/javascript" src="js/jquery-easyui-1.4/jquery.easyui.theme.js">
+		</script>
+		<script type="text/javascript" src="js/jquery-easyui-1.4/jquery.easyui.validate.js">
+		</script>
+		<script type="text/javascript" src="js/jquery-easyui-1.4/locale/easyui-lang-zh_CN.js"></script>
+	</head>
+	<body class="easyui-layout">
+		<table id="EasyTreegrid" class="easyui-treegrid" data-options="
+			  lines:true,
+			  rownumbers:true,
+			  border:false,
+			  idField:'id',
+			  treeField:'text',
+			  animate:false,
+			  toolbar:'#EasyToolBar',
+			  columns:[[{field:'text',title:'名称',width:350,align:'left'}]],
+			  onLoadSuccess:OnLoadSuccess,
+			  onDrop:OnDrop
+			">
+			
+		</table>
+	</body>
+	<div id="EasyToolBar" class="datagrid-toolbar" style="padding: 3px 10px">
+		<a onclick="Reload()" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-save'">保存</a>
+		<a onclick="AddNew()" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-add'">添加</a>
+	    <a onclick="Delete()" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-remove'">删除</a>
+	    <a onclick="Reload()" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-reload'">刷新</a>
+	</div>
+</html>
+
+<script type="text/javascript" src="js/treegrid-dnd.js" ></script>
+<script>
+	$(function(){
+		Reload()
+	})
+	
+	function OnLoadSuccess(_row,_data){
+		$(this).treegrid('enableDnd', _row?_row.id:null);
+	}
+	
+	function OnDrop(_targetRow,sourceRow,point){
+		console.log(_targetRow);
+		console.log(sourceRow);
+		console.log(point);
+		console.log(JSON.stringify($(this).treegrid('getData')))
+	}
+	
+	function AddNew(){
+		top.AddContentTab("添加角色","none.html");
+	}
+	
+	function Reload(){
+		//$("#EasyTreegrid").treegrid("reload");
+		easymsg.loading();
+		$("#EasyTreegrid").load("tempdata/adminrole-edit-combotree-data.js",function(d){
+			$("#EasyTreegrid").treegrid("loadData",eval(d));
+			easymsg.removeLoading();
+		})
+	}
+	
+	function Delete(){
+		CheckSelected(function(selected){
+			var msg="要删除的角色为："+selected.text;
+	    	var isHasChildren=$("#EasyTreegrid").treegrid("getChildren",selected.id).length>0;
+	    	if(isHasChildren){
+	    		msg+="（该角色的所有下级角色也会被删除）";
+	    	}
+	    	easymsg.alert(msg);
+		});
+	}
+	
+	function CheckSelected(_callBack){
+		var selected=$("#EasyTreegrid").treegrid("getSelected");
+		if(selected){
+			_callBack&&_callBack(selected);
+		}else{
+			easymsg.alert("请先选择一个角色");
+		}
+	}
+</script>

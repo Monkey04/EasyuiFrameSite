@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>后台首页</title>
+		
+		<link rel="stylesheet" href="css/admin.css" />
+		<link rel="stylesheet" href="js/jquery-easyui-1.4/themes/default/easyui.css"/>
+		<link rel="stylesheet" href="js/jquery-easyui-1.4/themes/icon.css" />
+		<script type="text/javascript" src="js/common.js" ></script>
+		
+		<script type="text/javascript" src="js/jquery-1.9.1.min.js" ></script>
+		<script type="text/javascript" src="js/jquery-easyui-1.4/jquery.easyui.min.js"> </script>
+		<script type="text/javascript" src="js/jquery-easyui-1.4/jquery.easyui.tab.js"> </script>
+	    <script type="text/javascript" src="js/jquery-easyui-1.4/jquery.easyui.msg.js"> </script>
+	    <script type="text/javascript" src="js/jquery-easyui-1.4/jquery.easyui.theme.js"> </script>
+	    <!--<script type="text/javascript" src="js/jquery-easyui-1.4/jquery.easyui.resize.js"> </script>-->
+	    
+	    <style>
+	    	.default-frame-header{ 
+	    		background: url(js/jquery-easyui-1.4/themes/default/images/top.gif) 50% 50% repeat-x rgb(127, 153, 190);
+                border: 0; color: white; height: 30px;
+	    	}
+	    	.default-frame-header a{
+	    		color: white;
+	    	}
+
+	    	
+	    	#ContentTab .panel>.panel-body{
+	    		overflow: hidden;
+	    	}
+	    	
+	    	.accordion-body{
+	    		padding: 5px 0px;
+	    	}
+	    </style>
+	</head>
+	<body class="easyui-layout">
+		<!--头部 begin-->
+		<div data-options="region:'north',split:false" class="default-frame-header">
+			<div class="f1" style="width: 240px;">
+				<h3 style="line-height: 30px;padding: 0px 10px 0px 20px;">
+					<span>XXX有限公司</span>
+				</h3>
+			</div>
+			<div id="MainMenu" class="f1" style="padding-top: 2px;">
+				<a href='javascript:void(0)' class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-custom-page'">内容 </a>
+			</div>
+			<div style="position: absolute;top: 2px;right: 25px;">
+				<span>您好，admin</span>
+				<a href="none.html" target="_blank"
+                   class="easyui-linkbutton" data-options="iconCls:'icon-custom-home',plain:true">网站首页</a>
+			    <a href="javascript:void(0)" id="btnLogout"  class="easyui-linkbutton"
+                    data-options="iconCls:'icon-custom-door_in',plain:true">退出</a>
+			</div>
+		</div>
+		<!--end 头部-->
+		
+		<!--中部左 begin-->
+		<div data-options="region:'west',split:true,title:'控制面板'" style="width: 240px;">
+			<div id="SecondMenu" class="easyui-accordion" data-options="fit:true,border:false">
+				<div title="中文站" data-options="iconCls:'icon-custom-home'">
+					<a href="javascript:(0)" title="" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-custom-home'" style="width: 90%;margin-left:10px; text-align: left">登录页</a>
+				</div>
+			</div>
+		</div>
+		<!--end 中部左-->
+		
+		<!--中部右 begin-->
+		<div data-options="region:'center'">
+			<div id="ContentTab" class="easyui-tabs" data-options="fit:true,border:false,plain:true" style="height: 80%;width: 100%;">
+				<div data-options="closable:false,title:'首页'">
+					<iframe scrolling="auto" frameborder="0" src="default.html" class="full-size"></iframe>
+				</div>
+			</div>
+		</div>
+		<!--end 中部右-->
+		
+		<!--底部 begin-->
+		<div data-options="region:'south',split:false" style="height: 30px;line-height: 28px;color: gray;" class="text-center">
+			Copyright © 2016 海景房 All Rights Reserved.
+		</div>
+		<!--end 底部-->
+		
+		<!--中部tab右键菜单 begin-->
+		<div class="easyui-menu" id="ContentTabSubMenu">
+			<div name="tab-refresh" data-options="iconCls:'icon-reload'">
+				刷新
+			</div>
+			<div class="menu-sep"></div>
+			<div name="tab-close-all" data-options="iconCls:'icon-clear'">
+				关闭全部标签
+			</div>
+			<div name="tab-close-other" data-options="iconCls:'icon-clear'">
+				关闭其他标签
+			</div>
+			<div class="menu-sep"></div>
+			<div name="tab-close-right" data-options="iconCls:'icon-clear'">
+				关闭右侧标签
+			</div>
+			<div name="tab-close-left" data-options="iconCls:'icon-clear'">
+				关闭左侧标签
+			</div>
+		</div>
+		<!--end 中部tab右键菜单-->
+	</body>
+	<script type="text/javascript" src="js/jquery-easyui-1.4/jquery.easyui.menu.js"> </script>
+</html>

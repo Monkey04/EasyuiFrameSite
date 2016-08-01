@@ -1,0 +1,62 @@
+/*
+ * css initialize
+ */
+body,ul,ol,li,p,h1,h2,h3,h4,h5,h6,form,fieldset,table,td,img,div{margin:0;padding:0;border:0;}
+
+ul,ol{list-style-type:none;} 
+
+a{text-decoration:none;} 
+a:link{color:black;}
+a:visited{color:black;} 
+a:hover,a:active,a:focus{color:black;/*text-decoration:underline;*/}  
+
+/*
+ * css common
+ */
+.text-center{text-align: center;}
+.full-size{width: 100%;height: 100%;}
+.f1{float: left;}
+.show-none{display: none;}
+.clear-both{clear: both;}
+.decoration-none{text-decoration: none;}
+.full-width{width: 100%;}
+.text-eclipsis{text-overflow: ellipsis;-ms-text-overflow: ellipsis;}
+.margin-center{margin-left:auto;margin-right: auto;}
+
+body{
+	font-size: 12px;
+	padding: 1px;
+}
+
+.edit-table{
+	border: none;
+}
+.edit-table tr{
+	padding: 3px;
+}
+.edit-table td.td-left{
+	text-align: right;
+    width: 12%;
+    min-width: 140px;
+    border-left: 0;
+    border-right: 0;
+    border-top: 0;
+    font-weight: normal;
+    background: none;
+}
+.edit-table td.td-right{
+	text-align: left;
+    border-left: 0;
+    font-weight: normal;
+    border-top: 0;
+    background: none;
+}
+
+.toolbar-menu{
+    display:inline-block;
+    padding: 2px 4px;	
+}
+.toolbar-menu li{
+	float: left;
+	margin-left: 2px;
+}

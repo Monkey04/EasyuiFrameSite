@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>控件模板页</title>
+
+		<link rel="stylesheet" href="css/admin.css" />
+		<link rel="stylesheet" href="js/jquery-easyui-1.4/themes/default/easyui.css" />
+		<link rel="stylesheet" href="js/jquery-easyui-1.4/themes/icon.css" />
+
+		<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+		<!--用于多图控件的拖动排序-->
+		<script type="text/javascript" src="js/jquery-ui-1.11.4/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="js/jquery-easyui-1.4/jquery.easyui.min.js">
+		</script>
+		<script type="text/javascript" src="js/jquery-easyui-1.4/jquery.easyui.msg.js">
+		</script>
+		<script type="text/javascript" src="js/jquery-easyui-1.4/jquery.easyui.resize.js">
+		</script>
+		<script type="text/javascript" src="js/jquery-easyui-1.4/jquery.easyui.theme.js">
+		</script>
+		<script type="text/javascript" src="js/jquery-easyui-1.4/jquery.easyui.validate.js">
+		</script>
+		<script type="text/javascript" src="js/jquery-easyui-1.4/locale/easyui-lang-zh_CN.js"></script>
+
+        <link rel="stylesheet" href="js/kindeditor-v4.1.7/themes/default/default.css" />
+        <script type="text/javascript" src="js/kindeditor-v4.1.7/kindeditor-all.js"></script>   
+
+	</head>
+
+	<body class="easyui-layout">
+		<div class="easyui-panel" data-options="title:'控件模板页',border:false">
+			<form id="EasyForm" method="post">
+				<table cellpadding="10" cellspacing="0" class="edit-table full-width">
+					<tr>
+						<td class="panel-header td-left">
+							textbox：
+						</td>
+						<td class="panel-header td-right">
+							<input class="easyui-textbox" data-options="required:true" />
+						</td>
+					</tr>
+					<tr>
+						<td class="panel-header td-left">
+							multiline-textbox：
+						</td>
+						<td class="panel-header td-right">
+							<input class="easyui-textbox" data-options="required:true,multiline:true" style="width: 300px;height: 100px;"/>
+						</td>
+					</tr>
+					<tr>
+						<td class="panel-header td-left">
+							combobox：
+						</td>
+						<td class="panel-header td-right">
+							<select class="easyui-combobox" data-options="editable:false">
+								<option>AAAAA</option>
+								<option>BBBBB</option>
+								<option>CCCCC</option>
+								<option>DDDDD</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td class="panel-header td-left">
+							single-image：
+						</td>
+						<td class="panel-header td-right">
+							<input type="text" class="easyui-textbox" style="width: 250px;"/>
+							<a id="UploadLogo" class="easyui-linkbutton" data-options="iconCls:'icon-custom-picture_add'">上传图片</a>
+						</td>
+					</tr>
+					<tr>
+						<td class="panel-header td-left">
+							datebox：
+						</td>
+						<td class="panel-header td-right">
+							<div class="easyui-datebox" data-options="required:true,editable:false" style="width: 110px"></div>
+						</td>
+					</tr>
+					<tr>
+						<td class="panel-header td-left">
+							datetimebox：
+						</td>
+						<td class="panel-header td-right">
+							<div class="easyui-datetimebox" data-options="required:true,editable:false" style="width: 160px"></div>
+						</td>
+					</tr>
+					<tr>
+						<td class="panel-header td-left">
+							richtext：
+						</td>
+						<td class="panel-header td-right">
+							<textarea id="Desc" style="width: 550px;height: 350px;"></textarea>
+						</td>
+					</tr>
+					<tr>
+						<td class="panel-header td-left">
+							numberspinner：
+						</td>
+						<td class="panel-header td-right">
+							<input type="text" class="easyui-numberspinner" data-options="required:true,editable:true,min:0.01,max:999,precision:2" style="width: 80px;"
+								value="1"/>
+						</td>
+					</tr>
+					<tr>
+						<td class="panel-header td-left">
+							multi-images：
+						</td>
+						<td class="panel-header td-right">
+							<div id="Imgs"></div>
+						</td>
+					</tr>
+					<tr>
+						<td class="panel-header td-left">
+							combogrid：
+						</td>
+						<td class="panel-header td-right">
+							<input id="Combogrid"></input>
+						</td>
+					</tr>
+					<tr>
+						<td class="panel-header td-left">
+							area：
+						</td>
+						<td class="panel-header td-right">
+							<div id="Area"></div>
+						</td>
+					</tr>
+					<tr>
+						<td class="panel-header td-left">
+							fileupload：
+						</td>
+						<td class="panel-header td-right">
+							<a id="UploadFile" class="easyui-linkbutton" data-options="iconCls:'icon-custom-add'">上传文件</a>
+						</td>
+					</tr>
+					<tr>
+						<td class="panel-header td-right">
+
+						</td>
+						<td class="panel-header td-right">
+							<a href="javascript:Save()" class="easyui-linkbutton" data-options="iconCls:'icon-save'">保存</a>
+							<a href="javascript:CommonClearForm('EasyForm')" class="easyui-linkbutton" data-options="iconCls:'icon-clear'">清空</a>
+							<a href="javascript:top.CloseNowTab()" class="easyui-linkbutton" data-options="iconCls:'icon-cancel'">关闭</a>
+						</td>
+					</tr>
+				</table>
+			</form>
+		</div>
+	</body>
+
+</html>
+
+<script type="text/javascript" src="js/common.js" ></script>
+<script type="text/javascript" src="js/jquery.easyui.common.js"></script>
+<script type="text/javascript" src="js/area.data-2.0.js" ></script>
+<script type="text/javascript" src="js/area.js" ></script>
+<script>
+	$(function() {
+		//初始化单图上传控件
+		a=InitSingleImageUpload("UploadLogo","img/1.jpg");
+		
+		//初始化富文本编辑器
+		b=InitRichTextEditor("Desc","<b>html</b>");
+		
+		//初始化多图上传控件
+		c=InitMultiImagesUpload("Imgs",[{
+			"img":"img/1.jpg",
+			"title":"1.jpg"
+		}],false);
+		
+		//初始化combogrid
+		$("#Combogrid").combogrid({
+			data:[{
+				"Id":1,
+				"Name":"合景天峻",
+				"HouseType":"住宅"
+			}],
+			required:true,
+			editable:false,
+			panelWidth: 400,
+			idField: "Id",
+			textField: "Name",
+			pagination: true,
+			rownumbers: true,
+			pageSize: 10,
+			pageList: [10],
+			fitColumns: true,
+			toolbar:undefined,
+			columns: [
+				[{
+					field: "Name",
+					title: "楼盘名称",
+					width: 120
+				}, {
+					field: "HouseType",
+					title: "物业类型",
+					width: 80
+				}]
+			]
+		});
+		
+		//初始化地区控件
+		d=InitAreaInput("Area");
+		
+		//初始化文件上传
+		e=InitFileUpload("UploadFile");
+		
+		console.log(a);
+		console.log(b);
+		console.log(c);
+		console.log(d);
+		console.log(e);
+	})
+	
+	function Save(){
+		SaveConfirmCallBack();
+	}
+</script>

@@ -1,0 +1,106 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>列表管理</title>
+		
+		<link rel="stylesheet" href="css/admin.css" />
+		<link rel="stylesheet" href="js/jquery-easyui-1.4/themes/default/easyui.css"/>
+		<link rel="stylesheet" href="js/jquery-easyui-1.4/themes/icon.css" />
+		
+		<script type="text/javascript" src="js/jquery-1.9.1.min.js" ></script>
+		<script type="text/javascript" src="js/jquery-easyui-1.4/jquery.easyui.min.js"> </script>
+		<script type="text/javascript" src="js/jquery-easyui-1.4/jquery.easyui.msg.js"> </script>
+		<script type="text/javascript" src="js/jquery-easyui-1.4/jquery.easyui.resize.js"> </script>
+		
+		<script type="text/javascript" src="js/jquery-easyui-1.4/jquery.easyui.theme.js">
+		</script>
+		<script type="text/javascript" src="js/jquery-easyui-1.4/jquery.easyui.validate.js">
+		</script>
+		<script type="text/javascript" src="js/jquery-easyui-1.4/locale/easyui-lang-zh_CN.js"></script>
+		
+		<script type="text/javascript" src="js/extension.js" ></script>
+	</head>
+	<body class="easyui-layout">
+		<table id="EasyTable" class="easyui-datagrid" data-options="
+			border:0,
+			title:'',
+			url:'tempdata/admin-manage-data.js',
+			method:'get',
+			singleSelect:false,
+			rownumbers:true,
+			idField:'Id',
+			fitColumns:false,
+			pagination:true,
+			pageSize:20,
+			pageNumber:1,
+			loadMsg:'加载中，请稍后... ...',
+			columns:[[{
+				field:'LoginName',title:'管理员账号',width:'200',align:'left'
+			},{
+				field:'Phone',title:'手机号码',width:'120',align:'left'
+			},{
+				field:'Email',title:'邮箱',width:'140',align:'left'
+			},{
+				field:'Enable',title:'是否启用',width:'70',align:'left',
+				formatter:function(value,row,index){return BooleanFormat(value)}
+			},{
+				field:'LoginCount',title:'登录次数',width:'70',align:'left'			
+			},{
+				field:'CreateDate',title:'创建时间',width:'150',align:'left',
+				formatter:function(value,row,index){ return TimeFormat(value) }
+			},{
+				field:'LastLogOffTime',title:'最后登录时间',width:'150',align:'left',
+				formatter:function(value,row,index){ return TimeFormat(value) }
+			}]],
+			onLoadSuccess:DatagridOnLoadSuccess,
+			toolbar:'#EasyToolBar',
+			onDblClickRow:OnDblClickRow
+		">
+			
+		</table>
+	</body>
+	<div id="EasyToolBar" class="datagrid-toolbar" style="padding: 3px 10px">
+		<div id="EasySearchbox" class="easyui-searchbox" style="width: 350px;" data-options="prompt:'请输入搜索关键字',menu:'#searchbox-menu',searcher:SearchHandler">
+			<div id="searchbox-menu" style="width: 120px;">
+				<div data-options="name:'LoginName',iconCls:'icon-ok'">管理员账号</div>
+				<div data-options="name:'Phone',iconCls:'icon-ok'">手机号码</div>
+				<div data-options="name:'Email',iconCls:'icon-ok'">邮箱</div>
+			</div>
+		</div>
+		<a onclick="SearchHandler()" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-search'">搜索</a>
+		<a onclick="AddNew()" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-add'">添加</a>
+		<a onclick="EditRow()" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-edit'">编辑</a>
+		<a onclick="DatagridDelete('EasyTable')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-remove'">删除</a>
+		<a onclick="DatagridReload('EasyTable')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-reload'">刷新</a>
+		<label class="easyui-linkbutton" data-options="plain:true" >
+			<input class="select-all" type="checkbox" style="position: relative;top: 3px;" onclick="DatagridSelectAllOrNot('EasyTable')"/>全选/取消
+		</label>
+	</div>
+</html>
+
+<script type="text/javascript" src="js/jquery.easyui.common.js" ></script>
+<script>
+
+	function SearchHandler(_value,_name){
+		DatagridSearch('EasyTable',$('#EasySearchbox').searchbox('getValue'),$('#EasySearchbox').searchbox('getName'));
+		//Search("EasyTable",_value,_name)
+	}
+	
+	function AddNew(){
+		top.AddContentTab("添加管理员","none.html");
+	}
+	
+	function EditRow(){
+		DatagridSingleSelect("EasyTable",function(id,data){
+			top.AddContentTab("编辑管理员-"+data["LoginName"],"none.html?editid="+data["Id"]);
+		})
+	}
+	
+	function OnDblClickRow(_rowIndex,_rowData){
+		var title=_rowData["LoginName"];
+		title=title.toString().Sub(10);
+		
+    	top.AddContentTab("编辑管理员-"+title,"none.html?editid="+_rowData["Id"]+"&edittext="+title);
+    }
+</script>

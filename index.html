@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<link rel="stylesheet" href="css/admin.css" />
+		<link rel="stylesheet" href="js/jquery-easyui-1.4/themes/default/easyui.css" />
+		<link rel="stylesheet" href="js/jquery-easyui-1.4/themes/icon.css" />
+
+		<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+		<script type="text/javascript" src="js/jquery-easyui-1.4/jquery.easyui.min.js">
+		</script>
+		<script type="text/javascript" src="js/jquery-easyui-1.4/jquery.easyui.theme.js">
+		</script>
+	</head>
+
+	<body>
+		<div id="w" class="easyui-window" title="管理员登录" data-options="modal:true,closed:false,iconCls:'icon-custom-user',closable:false,minimizable:false" style="width:400px;padding:20px 70px 20px 70px;">
+
+			<div style="margin-bottom:10px">
+				<input class="easyui-textbox" id="logname" style="width:100%;height:30px;padding:12px" data-options="prompt:'登录邮箱',iconCls:'icon-man',iconWidth:38">
+			</div>
+			<div style="margin-bottom:20px">
+				<input class="easyui-textbox" id="logpass" type="password" style="width:100%;height:30px;padding:12px" data-options="prompt:'登录密码',iconCls:'icon-lock',iconWidth:38">
+			</div>
+			<div style="margin-bottom:20px">
+				<input class="easyui-textbox" type="text" id="logyzm" style="width:50%;height:30px;padding:12px" data-options="prompt:'验证码'">
+				<a href="javascript:;" ><img style=" margin:0 0 0 3px ; vertical-align:middle; height:26px;" src="img/code.jpg"></a>
+			</div>
+			<div style="margin-bottom:20px">
+				<input type="checkbox" checked="checked" id="logrem">
+				<span>Remember me</span>
+			</div>
+			<div>
+				<a href="default-frame.html" class="easyui-linkbutton" data-options="iconCls:'icon-ok'" style="padding:5px 0px;width:100%;">
+					<span style="font-size:14px;">登录</span>
+				</a>
+			</div>
+
+		</div>
+	</body>
+
+</html>
