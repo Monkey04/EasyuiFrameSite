@@ -60,7 +60,7 @@ var menuArray = [{
 ```
 ```sh
 该框架共有13款皮肤，修改皮肤的方法 - 修改js/jquery-easyui-1.4/jquery.easyui.theme.js 里的参数g_theme值
-<br>该参数的有效值为：default、gray、metro、bootstrap、black、metro-blue、metro-gray、metro-green、metro-orange、metro-red、ui-cupertino、ui-pepper-grinder、ui-sunny
+该参数的有效值为：default、gray、metro、bootstrap、black、metro-blue、metro-gray、metro-green、metro-orange、metro-red、ui-cupertino、ui-pepper-grinder、ui-sunny
 ```
 ```sh
 框架里的所有标签页只要引入了js/jquery-easyui-1.4/jquery.easyui.resize.js都会自适应
@@ -179,6 +179,7 @@ function DatagridSelectAllOrNot(_datagridId) {
  - area (自定义地区控件)
  - fileupload (自定义文件上传控件)
 <br>
+
 ######single-image (自定义单图上传控件)
 ```sh
  single-image (自定义单图上传控件)
